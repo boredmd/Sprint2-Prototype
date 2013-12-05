@@ -25,7 +25,8 @@
 <h1>
 	This is User page.  
 </h1>
-<form method="get" action="submit">
+<a href="/sg/">Logout</a>
+<form method="get" action="retrieve">
 		<input type="submit" value="Today">
 		<input type="submit" value="This week">
 		<input type="date" id="birthday" name="birthday" size="20"/>
@@ -77,7 +78,7 @@
 			<th align="right">
 				Compulsory :
 			</th>
-			<th align="left">
+			<th>
 				${compulsory}
 			</th>
 		</tr>

@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	//private timetableDAO tdao = new timetableDAO();
 	private ArrayList<timetable> lol = new ArrayList<timetable>();
+	timetable tt = new timetable();
 	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -44,6 +45,35 @@ public class HomeController {
 		return "home";
 	}
 	
+	
+	
+	@RequestMapping("retrieve")
+	public String retrieve(Model model){
+		
+		
+		String currenttime = tt.getCurrenttime();
+		int duration = tt.getDuration();
+		int repeatfreq = tt.getRepeatfreq();
+		String lecturer = tt.getLecturer();
+		int attendnace = tt.getAttendnace();
+		String compulsory = "yes";
+		String venue = tt.getVenue();
+		
+
+	
+		model.addAttribute("currenttime", currenttime );
+		model.addAttribute("duration", duration );
+		model.addAttribute("repeatfreq", repeatfreq );
+		model.addAttribute("lecturer", lecturer );
+		model.addAttribute("attendnace", attendnace );
+		model.addAttribute("compulsory", compulsory );
+		model.addAttribute("venue", venue );
+		
+		
+		return "/User";
+		
+	}
+			
 	@RequestMapping("/login")
 	public String login(
 			@RequestParam(value="username", required = true) String username, 
@@ -74,7 +104,7 @@ public class HomeController {
 				!duration.isEmpty() && !repeatfreq.isEmpty() &&
 				!lecturer.isEmpty() && !attendance.isEmpty() &&
 				!compulsory.isEmpty() && !venue.isEmpty()) {
-			timetable tt = new timetable();
+			//timetable tt = new timetable();
 			tt.setDatetoadd(datetoadd);
 			tt.setCurrenttime(currenttime);
 			tt.setDuration(Integer.parseInt(duration));
